@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TiêmChủng Địa Phương – Đăng ký lịch tiêm trực tuyến, nhanh chóng & miễn phí</title>
+  <meta name="description" content="Hệ thống đăng ký lịch tiêm chủng trực tuyến dành cho người dân. Nhanh – Đơn giản – Miễn phí. Bảo vệ sức khoẻ gia đình bạn ngay hôm nay." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0066CC;
+      --primary-2: #0052A3;
+      --accent: #00C896;
+      --accent-2: #00A077;
+      --gold: #F5A623;
+      --white: #ffffff;
+      --glass: rgba(255,255,255,0.10);
+      --glass-border: rgba(255,255,255,0.18);
+      --dark: #050E1F;
+      --dark-2: #0A1A35;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      color: #fff;
+      background: var(--dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ====== SCROLLBAR ====== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+    /* ====== NAV ====== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(5,14,31,0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 20px; font-weight: 800; color: #fff;
+      text-decoration: none; letter-spacing: -0.3px;
+    }
+    .nav-logo-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 16px rgba(0,102,204,0.4);
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-size: 15px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      display: flex; gap: 12px; align-items: center;
+    }
+    .btn-nav-login {
+      padding: 10px 22px; border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      background: transparent; color: #fff;
+      font-size: 14px; font-weight: 700;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-nav-login:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); }
+    .btn-nav-register {
+      padding: 10px 22px; border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff; font-size: 14px; font-weight: 700;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      cursor: pointer; transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(0,200,150,0.35);
+    }
+    .btn-nav-register:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,200,150,0.5); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+
+    /* ====== HERO ====== */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 100px 24px 80px;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse at 20% 50%, #00399e55 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, #00c89640 0%, transparent 50%),
+                  radial-gradient(ellipse at 60% 80%, #0066CC30 0%, transparent 50%),
+                  linear-gradient(160deg, #020c1e 0%, #061530 50%, #030b1a 100%);
+    }
+    /* Floating blobs */
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: 0.45; z-index: 0;
+      animation: blobFloat linear infinite;
+    }
+    .blob-1 { width: 500px; height: 500px; background: #0052A3; top: -150px; left: -100px; animation-duration: 22s; }
+    .blob-2 { width: 380px; height: 380px; background: #00C896; top: 30%; right: -80px; animation-duration: 18s; animation-delay: -6s; }
+    .blob-3 { width: 300px; height: 300px; background: #0077FF; bottom: -80px; left: 35%; animation-duration: 26s; animation-delay: -10s; }
+    @keyframes blobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      25% { transform: translate(30px,-40px) scale(1.05); }
+      50% { transform: translate(-20px,30px) scale(0.96); }
+      75% { transform: translate(40px,10px) scale(1.03); }
+    }
+    /* Particles */
+    #particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      animation: particleDrift linear infinite;
+    }
+    @keyframes particleDrift {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,200,150,0.12);
+      border: 1px solid rgba(0,200,150,0.3);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 13px; font-weight: 600; color: #4DFFCA;
+      margin-bottom: 28px;
+      position: relative; z-index: 2;
+      animation: fadeUp 0.8s ease both;
+    }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulse 2s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.4)} }
+    .hero-title {
+      font-size: clamp(38px, 7vw, 80px);
+      font-weight: 900; line-height: 1.08;
+      letter-spacing: -2px;
+      position: relative; z-index: 2;
+      animation: fadeUp 0.9s ease 0.1s both;
+    }
+    .hero-title .line-blue {
+      background: linear-gradient(90deg, #60B4FF, #A8D8FF, #60B4FF);
+      background-size: 200%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    .hero-title .line-green {
+      background: linear-gradient(90deg, #00E5A0, #7FFFD4, #00C896);
+      background-size: 200%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite 1s;
+    }
+    @keyframes shimmer { 0%{background-position:0%} 100%{background-position:200%} }
+    .hero-sub {
+      max-width: 620px; margin: 24px auto 40px;
+      font-size: clamp(16px,2.5vw,20px); font-weight: 400;
+      color: rgba(255,255,255,0.65); line-height: 1.7;
+      position: relative; z-index: 2;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      position: relative; z-index: 2;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+    .btn-hero-primary {
+      padding: 18px 40px;
+      background: linear-gradient(135deg, var(--accent), #009A72);
+      border: none; border-radius: 14px;
+      font-size: 16px; font-weight: 800;
+      font-family: 'Be Vietnam Pro', sans-serif; color: #fff;
+      cursor: pointer; transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(0,200,150,0.4);
+      position: relative; overflow: hidden;
+    }
+    .btn-hero-primary::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,200,150,0.55); }
+    .btn-hero-primary:hover::after { opacity: 1; }
+    .btn-hero-secondary {
+      padding: 18px 40px;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 14px;
+      font-size: 16px; font-weight: 700;
+      font-family: 'Be Vietnam Pro', sans-serif; color: #fff;
+      cursor: pointer; transition: all 0.3s;
+      backdrop-filter: blur(12px);
+    }
+    .btn-hero-secondary:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.35); transform: translateY(-2px); }
+    .hero-trust {
+      display: flex; align-items: center; gap: 20px;
+      justify-content: center; margin-top: 48px;
+      position: relative; z-index: 2;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+    .trust-avatars { display: flex; }
+    .trust-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      background: linear-gradient(135deg, #0066CC, #00C896);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; margin-left: -10px; color: #fff;
+    }
+    .trust-avatar:first-child { margin-left: 0; }
+    .trust-text { font-size: 14px; color: rgba(255,255,255,0.65); }
+    .trust-text strong { color: #fff; }
+    /* Hero scroll indicator */
+    .scroll-cue {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      z-index: 2; animation: fadeIn 1.5s ease 1s both;
+    }
+    .scroll-cue span { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; }
+    .scroll-mouse {
+      width: 24px; height: 38px; border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 12px; display: flex; justify-content: center; padding-top: 6px;
+    }
+    .scroll-dot { width: 4px; height: 8px; background: #fff; border-radius: 2px; animation: scrollDot 1.8s ease infinite; }
+    @keyframes scrollDot { 0%,100%{transform:translateY(0);opacity:1} 80%{transform:translateY(12px);opacity:0} }
+
+    /* ====== STATS BAR ====== */
+    #stats {
+      padding: 0 40px;
+      position: relative; z-index: 10;
+    }
+    .stats-bar {
+      max-width: 1100px; margin: -36px auto 0;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .stat-item {
+      padding: 32px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.3s;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item:hover { background: rgba(255,255,255,0.06); }
+    .stat-number {
+      font-size: clamp(28px,4vw,44px); font-weight: 900;
+      line-height: 1; letter-spacing: -1px;
+      background: linear-gradient(135deg, #60B4FF, #00E5A0);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 8px; font-weight: 500; }
+
+    /* ====== SECTIONS SHARED ====== */
+    section { padding: 100px 40px; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-tag::before { content:''; width:24px; height:2px; background:var(--accent); border-radius:2px; }
+    .section-title {
+      font-size: clamp(28px, 4.5vw, 52px);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+    .section-title span {
+      background: linear-gradient(90deg, #60B4FF, #00E5A0);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-sub {
+      font-size: clamp(15px,2vw,18px);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7; max-width: 560px;
+      margin-top: 16px;
+    }
+    .section-header { margin-bottom: 64px; }
+
+    /* ====== FEATURES ====== */
+    #features { background: var(--dark); }
+    .features-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px; padding: 36px 32px;
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+      cursor: default;
+    }
+    .feature-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 24px;
+      background: radial-gradient(circle at 30% 0%, rgba(0,200,150,0.12), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .feature-card:hover { border-color: rgba(0,200,150,0.3); transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-card.card-blue:hover { border-color: rgba(96,180,255,0.35); }
+    .feature-card.card-blue::before { background: radial-gradient(circle at 30% 0%, rgba(0,102,204,0.15), transparent 60%); }
+    .feature-card.card-gold:hover { border-color: rgba(245,166,35,0.35); }
+    .feature-card.card-gold::before { background: radial-gradient(circle at 30% 0%, rgba(245,166,35,0.12), transparent 60%); }
+    .feature-icon {
+      width: 60px; height: 60px; border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; margin-bottom: 24px;
+      position: relative; z-index: 1;
+    }
+    .icon-green { background: rgba(0,200,150,0.15); box-shadow: 0 0 0 1px rgba(0,200,150,0.25); }
+    .icon-blue  { background: rgba(0,102,204,0.18); box-shadow: 0 0 0 1px rgba(96,180,255,0.25); }
+    .icon-gold  { background: rgba(245,166,35,0.15); box-shadow: 0 0 0 1px rgba(245,166,35,0.25); }
+    .icon-purple{ background: rgba(147,51,234,0.15); box-shadow: 0 0 0 1px rgba(167,139,250,0.25); }
+    .icon-red   { background: rgba(239,68,68,0.15);  box-shadow: 0 0 0 1px rgba(252,165,165,0.25); }
+    .icon-cyan  { background: rgba(6,182,212,0.15);  box-shadow: 0 0 0 1px rgba(103,232,249,0.25); }
+    .feature-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; position: relative; z-index: 1; }
+    .feature-desc { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; position: relative; z-index: 1; }
+    .feature-card.featured {
+      grid-column: span 1;
+      background: linear-gradient(140deg, rgba(0,102,204,0.25), rgba(0,200,150,0.12));
+      border-color: rgba(0,200,150,0.25);
+    }
+
+    /* ====== HOW IT WORKS ====== */
+    #how { background: linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%); }
+    .how-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .how-steps { display: flex; flex-direction: column; gap: 0; }
+    .how-step {
+      display: flex; gap: 24px; padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer; transition: all 0.3s;
+      position: relative;
+    }
+    .how-step:last-child { border-bottom: none; }
+    .how-step:hover .step-num { background: linear-gradient(135deg, var(--accent), #009A72); }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 16px; flex-shrink: 0;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 900; transition: all 0.3s;
+    }
+    .step-title { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+    .step-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .how-visual {
+      position: relative;
+    }
+    .phone-mockup {
+      width: 100%; max-width: 320px; margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 44px; padding: 16px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .phone-notch {
+      width: 90px; height: 26px; background: rgba(255,255,255,0.08);
+      border-radius: 13px; margin: 0 auto 12px;
+    }
+    .phone-screen {
+      background: linear-gradient(160deg, #051228, #0a1f3d);
+      border-radius: 32px; padding: 20px 16px; min-height: 460px;
+      overflow: hidden; position: relative;
+    }
+    .phone-header {
+      background: linear-gradient(135deg, #0077CC, #005FA3);
+      border-radius: 20px; padding: 16px; margin-bottom: 14px;
+    }
+    .phone-header-greet { font-size: 11px; color: rgba(255,255,255,0.7); }
+    .phone-header-name { font-size: 16px; font-weight: 800; color: #fff; }
+    .phone-card {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 14px; margin-bottom: 10px;
+    }
+    .phone-card-label { font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 600; margin-bottom: 4px; }
+    .phone-card-value { font-size: 13px; font-weight: 700; color: #fff; }
+    .phone-btn {
+      background: linear-gradient(135deg, #00C896, #009A72);
+      border-radius: 12px; padding: 12px;
+      text-align: center; font-size: 13px; font-weight: 800; color: #fff;
+      margin-top: 6px;
+    }
+    .phone-qr {
+      width: 70px; height: 70px;
+      background: repeating-linear-gradient(0deg,rgba(255,255,255,0.5) 0,rgba(255,255,255,0.5) 4px,transparent 4px,transparent 8px),
+                  repeating-linear-gradient(90deg,rgba(255,255,255,0.5) 0,rgba(255,255,255,0.5) 4px,transparent 4px,transparent 8px);
+      border-radius: 8px; border: 2px solid rgba(255,255,255,0.3);
+      float: right; margin-top: -10px;
+    }
+    .floating-card {
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px; padding: 14px 18px;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      white-space: nowrap;
+    }
+    .floating-card.fc-1 { right: -60px; top: 60px; animation: floatY 4s ease-in-out infinite; }
+    .floating-card.fc-2 { left: -70px; bottom: 120px; animation: floatY 4.5s ease-in-out infinite 1s; }
+    .fc-icon { font-size: 20px; margin-bottom: 4px; }
+    .fc-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.6); }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+    /* ====== TESTIMONIALS ====== */
+    #testimonials { background: var(--dark); }
+    .testi-track-wrap { max-width: 1100px; margin: 0 auto; overflow: hidden; }
+    .testi-track {
+      display: flex; gap: 24px;
+      animation: tickerScroll 35s linear infinite;
+      width: max-content;
+    }
+    .testi-track:hover { animation-play-state: paused; }
+    @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .testi-card {
+      width: 320px; flex-shrink: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px; padding: 28px;
+      transition: border-color 0.3s;
+    }
+    .testi-card:hover { border-color: rgba(0,200,150,0.3); }
+    .testi-stars { color: var(--gold); font-size: 16px; margin-bottom: 14px; }
+    .testi-text { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .testi-name { font-size: 14px; font-weight: 800; }
+    .testi-meta { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+    /* ====== WHY ====== */
+    #why { background: linear-gradient(180deg, var(--dark) 0%, #050d1c 100%); }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .why-card {
+      display: flex; gap: 20px; align-items: flex-start;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px; padding: 28px;
+      transition: all 0.3s;
+    }
+    .why-card:hover { background: rgba(0,200,150,0.06); border-color: rgba(0,200,150,0.2); transform: translateY(-4px); }
+    .why-icon { font-size: 32px; flex-shrink: 0; }
+    .why-title { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+    .why-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+    /* ====== CTA ====== */
+    #cta {
+      padding: 100px 40px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #001F5C 0%, #003d99 50%, #005229 100%);
+      text-align: center;
+    }
+    #cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% -20%, rgba(0,200,150,0.3), transparent 60%),
+                  radial-gradient(ellipse at 20% 120%, rgba(0,102,204,0.4), transparent 50%);
+    }
+    .cta-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+    .cta-title { font-size: clamp(32px, 5vw, 60px); font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; }
+    .cta-sub { font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 40px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta-main {
+      padding: 20px 48px; border-radius: 14px; border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff; font-size: 18px; font-weight: 800;
+      font-family: 'Be Vietnam Pro', sans-serif; cursor: pointer;
+      box-shadow: 0 10px 40px rgba(0,200,150,0.45);
+      transition: all 0.3s;
+    }
+    .btn-cta-main:hover { transform: translateY(-4px); box-shadow: 0 18px 50px rgba(0,200,150,0.6); }
+    .cta-note { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.4); }
+    .cta-features { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+    .cta-feat { display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 600; }
+    .cta-feat::before { content:'✓'; width:20px;height:20px;background:rgba(0,200,150,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--accent); }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #020810;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 60px 40px 32px;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-name { font-size: 20px; font-weight: 800; margin-top: 12px; margin-bottom: 12px; }
+    .footer-brand-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+    .footer-col-title { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.35); }
+    .footer-socials { display: flex; gap: 12px; }
+    .social-icon-btn {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; cursor: pointer; transition: all 0.2s; text-decoration: none;
+    }
+    .social-icon-btn:hover { background: rgba(0,200,150,0.15); border-color: rgba(0,200,150,0.3); }
+
+    /* ====== ANIMATIONS ====== */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ====== RESPONSIVE ====== */
+    @media(max-width:1024px){
+      .features-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:768px){
+      nav { padding: 0 20px; }
+      .nav-links,.nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      section { padding: 70px 20px; }
+      #stats { padding: 0 20px; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); }
+      .features-grid { grid-template-columns: 1fr; }
+      .how-inner { grid-template-columns: 1fr; }
+      .phone-mockup { max-width: 260px; }
+      .floating-card { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .hero-title { letter-spacing: -1px; }
+    }
+    @media(max-width:480px){
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-hero-primary,.btn-hero-secondary { width: 100%; max-width: 300px; }
+    }
+
+    /* ====== WHITE + NAVY THEME ====== */
+    :root {
+      --primary: #0b4ea2;
+      --primary-2: #083b7d;
+      --accent: #1261c9;
+      --accent-2: #0b4ea2;
+      --dark: #ffffff;
+      --dark-2: #f4f8fc;
+    }
+    body { color: #102a43; background: #ffffff; }
+    ::-webkit-scrollbar-track { background: #eef4fa; }
+    ::-webkit-scrollbar-thumb { background: #1261c9; }
+    nav { background: rgba(255,255,255,0.92); }
+    nav.scrolled { background: rgba(255,255,255,0.96); border-bottom-color: #dce8f5; box-shadow: 0 4px 24px rgba(16,42,67,0.08); }
+    .nav-logo { color: #0b2d50; }
+    .nav-logo-icon { background: linear-gradient(135deg, #0b4ea2, #1261c9); box-shadow: 0 4px 16px rgba(18,97,201,0.24); }
+    .nav-links a { color: #49657e; }
+    .nav-links a:hover { color: #0b4ea2; }
+    .btn-nav-login { color: #0b4ea2; border-color: #b9cfe5; }
+    .btn-nav-login:hover { border-color: #0b4ea2; background: #f1f6fb; }
+    .btn-nav-register { background: #0b4ea2; box-shadow: 0 4px 14px rgba(11,78,162,0.24); }
+    .btn-nav-register:hover { box-shadow: 0 6px 20px rgba(11,78,162,0.35); }
+    .nav-hamburger span { background: #0b4ea2; }
+    #hero { color: #102a43; }
+    .hero-bg { background: radial-gradient(ellipse at 10% 20%, #dcecff 0%, transparent 52%), radial-gradient(ellipse at 90% 10%, #e4f3ff 0%, transparent 45%), linear-gradient(160deg, #ffffff 0%, #f6faff 100%); }
+    .blob { opacity: 0.12; filter: blur(90px); }
+    .hero-badge { background: #eaf3ff; border-color: #b9d5f5; color: #0b4ea2; }
+    .badge-dot { background: #1261c9; box-shadow: 0 0 8px #1261c9; }
+    .hero-title { color: #0b2d50; }
+    .hero-title .line-blue { background: linear-gradient(90deg, #0b4ea2, #2e80db, #0b4ea2); background-size: 200%; }
+    .hero-title .line-green { background: linear-gradient(90deg, #1261c9, #4c9df0, #1261c9); background-size: 200%; }
+    .hero-sub { color: #557089; }
+    .hero-sub strong { color: #0b2d50 !important; }
+    .btn-hero-primary { background: #0b4ea2; box-shadow: 0 8px 30px rgba(11,78,162,0.28); }
+    .btn-hero-primary:hover { box-shadow: 0 14px 40px rgba(11,78,162,0.38); }
+    .btn-hero-secondary { background: #ffffff; border-color: #bfd2e5; color: #0b4ea2; box-shadow: 0 8px 24px rgba(16,42,67,0.06); }
+    .btn-hero-secondary:hover { background: #f4f8fc; border-color: #7da8d5; }
+    .trust-avatar { background: linear-gradient(135deg, #0b4ea2, #4c9df0); border-color: #ffffff; }
+    .trust-text { color: #688198; }
+    .trust-text strong { color: #0b2d50; }
+    .scroll-cue span { color: #7790a6; }
+    .scroll-dot { background: #0b4ea2; }
+    #stats { background: #0b4ea2; }
+    .stat-item { border-color: rgba(255,255,255,0.18); }
+    .stat-item:hover { background: rgba(255,255,255,0.1); }
+    .stat-label { color: rgba(255,255,255,0.72); }
+    section { color: #102a43; }
+    #features, #testimonials { background: #ffffff; }
+    .section-tag { color: #1261c9; }
+    .section-tag::before { background: #1261c9; }
+    .section-title { color: #0b2d50; }
+    .section-subtitle { color: #688198; }
+    .feature-card, .testi-card, .why-card { background: #ffffff; border-color: #dce8f5; box-shadow: 0 10px 30px rgba(16,42,67,0.05); }
+    .feature-card:hover, .testi-card:hover { border-color: #9fc2e5; box-shadow: 0 20px 45px rgba(16,42,67,0.1); }
+    .feature-title, .why-title { color: #0b2d50; }
+    .feature-desc, .why-desc, .testi-text { color: #607a91; }
+    #how, #why { background: #f4f8fc; }
+    .how-step { color: #0b2d50; }
+    .step-num { background: #e4effc; color: #0b4ea2; border-color: #b9d5f5; }
+    .step-title { color: #0b2d50; }
+    .step-desc { color: #688198; }
+    .why-card:hover { background: #f4f9ff; border-color: #9fc2e5; }
+    #cta { background: linear-gradient(135deg, #062d63 0%, #0b4ea2 100%); }
+    .btn-cta-main { background: #ffffff; color: #0b4ea2; box-shadow: 0 10px 40px rgba(0,0,0,0.18); }
+    .btn-cta-main:hover { box-shadow: 0 18px 50px rgba(0,0,0,0.25); }
+    .cta-note a { color: rgba(255,255,255,0.78) !important; }
+    footer { background: #06234b; border-top-color: rgba(255,255,255,0.12); }
+    .footer-brand-desc, .footer-links a, .footer-copy { color: rgba(255,255,255,0.68); }
+    .footer-col-title { color: rgba(255,255,255,0.52); }
+    .footer-links a:hover { color: #ffffff; }
+    .social-icon-btn { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); }
+    .social-icon-btn:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body>
+
+<!-- ====== NAV ====== -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">💉</div>
+    TiêmChủng <span style="color:var(--accent)">Địa Phương</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Tính năng</a></li>
+    <li><a href="#how">Cách dùng</a></li>
+    <li><a href="#why">Lý do chọn</a></li>
+    <li><a href="#testimonials">Đánh giá</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="btn-nav-login" onclick="window.location.href='vaccination_app.html'">Đăng nhập</button>
+    <button class="btn-nav-register" onclick="window.location.href='vaccination_app.html'">Đăng ký miễn phí →</button>
+  </div>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <canvas id="particles"></canvas>
+
+  <div class="hero-badge">
+    <div class="badge-dot"></div>
+    Hệ thống tiêm chủng quốc gia số hoá
+  </div>
+
+  <h1 class="hero-title">
+    <span class="line-blue">Đặt lịch tiêm chủng</span><br/>
+    <span class="line-green">dễ như đặt bàn ăn</span>
+  </h1>
+
+  <p class="hero-sub">
+    Quên đi cảnh xếp hàng chờ đợi. Hệ thống của chúng tôi giúp bạn đăng ký lịch tiêm trong <strong style="color:#fff">3 bước</strong>, nhận mã QR xác nhận ngay lập tức — hoàn toàn <strong style="color:var(--accent)">miễn phí</strong>.
+  </p>
+
+  <div class="hero-actions">
+    <button class="btn-hero-primary" onclick="window.location.href='vaccination_app.html'">
+      💉 Đăng ký tiêm ngay
+    </button>
+    <button class="btn-hero-secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">
+      ▶ Xem cách hoạt động
+    </button>
+  </div>
+
+  <div class="hero-trust">
+    <div class="trust-avatars">
+      <div class="trust-avatar">👩</div>
+      <div class="trust-avatar">👨</div>
+      <div class="trust-avatar">👧</div>
+      <div class="trust-avatar">👴</div>
+      <div class="trust-avatar" style="font-size:12px;font-weight:800">+</div>
+    </div>
+    <div class="trust-text">
+      Hơn <strong>120,000+</strong> người dân đã tin dùng · ⭐ 4.9/5
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Cuộn xuống</span>
+    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+  </div>
+</section>
+
+<!-- ====== STATS ====== -->
+<div id="stats">
+  <div class="stats-bar reveal">
+    <div class="stat-item">
+      <div class="stat-number" data-target="120000" data-suffix="+">&nbsp;</div>
+      <div class="stat-label">Lượt đăng ký thành công</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="63" data-suffix=" tỉnh">&nbsp;</div>
+      <div class="stat-label">Phủ sóng toàn quốc</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="98" data-suffix="%">&nbsp;</div>
+      <div class="stat-label">Hài lòng sau sử dụng</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="3" data-suffix=" phút">&nbsp;</div>
+      <div class="stat-label">Thời gian đăng ký trung bình</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== FEATURES ====== -->
+<section id="features">
+  <div class="section-header reveal" style="max-width:1100px;margin:0 auto">
+    <div class="section-tag">Tính năng nổi bật</div>
+    <h2 class="section-title">Mọi thứ bạn cần <span>trong một ứng dụng</span></h2>
+    <p class="section-sub">Từ đặt lịch đến nhận phiếu xác nhận — tất cả được thiết kế để đơn giản và nhanh chóng nhất có thể.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card card-green reveal" style="transition-delay:0.05s">
+      <div class="feature-icon icon-green">📅</div>
+      <div class="feature-title">Đặt lịch 3 bước</div>
+      <div class="feature-desc">Chỉ cần 3 bước đơn giản: nhập thông tin, chọn ngày tiêm, xác nhận. Hoàn tất trong vòng 3 phút.</div>
+    </div>
+    <div class="feature-card card-blue reveal" style="transition-delay:0.1s">
+      <div class="feature-icon icon-blue">📲</div>
+      <div class="feature-title">Mã QR tức thì</div>
+      <div class="feature-desc">Nhận ngay mã QR kỹ thuật số sau khi đặt lịch. Xuất trình tại điểm tiêm, không cần giấy tờ.</div>
+    </div>
+    <div class="feature-card card-gold reveal" style="transition-delay:0.15s">
+      <div class="feature-icon icon-gold">🔔</div>
+      <div class="feature-title">Nhắc lịch thông minh</div>
+      <div class="feature-desc">Hệ thống tự động nhắc nhở qua SMS/Zalo trước 24h và 2h. Không bao giờ bỏ lỡ buổi tiêm.</div>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.2s">
+      <div class="feature-icon icon-purple">👨‍👩‍👧‍👦</div>
+      <div class="feature-title">Hồ sơ gia đình</div>
+      <div class="feature-desc">Quản lý lịch tiêm cho cả gia đình trong một tài khoản. Hỗ trợ đặt cho trẻ em và người cao tuổi.</div>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.25s">
+      <div class="feature-icon icon-red">🏥</div>
+      <div class="feature-title">Tìm điểm tiêm gần nhất</div>
+      <div class="feature-desc">Bản đồ tương tác hiển thị tất cả trung tâm y tế, TYT phường/xã gần bạn với thông tin chỗ trống.</div>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.3s">
+      <div class="feature-icon icon-cyan">🌐</div>
+      <div class="feature-title">Theo dõi lịch sử tiêm</div>
+      <div class="feature-desc">Xem toàn bộ lịch sử tiêm chủng của bản thân và gia đình. Xuất sổ tiêm điện tử mọi lúc.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== HOW IT WORKS ====== -->
+<section id="how">
+  <div class="how-inner">
+    <div>
+      <div class="section-tag reveal">Cách hoạt động</div>
+      <h2 class="section-title reveal">Đơn giản đến <span>không ngờ</span></h2>
+      <p class="section-sub reveal" style="margin-bottom:48px">Không cần tài khoản phức tạp, không cần học cách dùng. Chỉ cần 3 bước là xong.</p>
+      <div class="how-steps reveal">
+        <div class="how-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Tạo tài khoản</div>
+            <div class="step-desc">Đăng ký với số điện thoại hoặc đăng nhập nhanh qua Zalo/Google. Chỉ mất 30 giây.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Chọn vắc xin & Đặt lịch</div>
+            <div class="step-desc">Chọn loại vắc xin cần tiêm, điểm tiêm gần nhà, ngày và giờ phù hợp với lịch của bạn.</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Nhận QR & Đến tiêm</div>
+            <div class="step-desc">Nhận phiếu QR điện tử. Đến đúng giờ, xuất trình mã — xong! Không cần xếp hàng chờ đợi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how-visual reveal" style="transition-delay:0.2s">
+      <div class="floating-card fc-1">
+        <div class="fc-icon">✅</div>
+        <div style="font-weight:800">Xác nhận thành công</div>
+        <div class="fc-label">TC-8932 · 22/09/2026</div>
+      </div>
+      <div class="floating-card fc-2">
+        <div class="fc-icon">🔔</div>
+        <div style="font-weight:800">Nhắc nhở hôm nay</div>
+        <div class="fc-label">Còn 2 giờ nữa · TYT Nghĩa Tân</div>
+      </div>
+      <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-header">
+            <div class="phone-header-greet">Xin chào,</div>
+            <div class="phone-header-name">Nguyễn Thị Lan 👋</div>
+          </div>
+          <div class="phone-card" style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div>
+              <div class="phone-card-label">Lịch hẹn tiếp theo</div>
+              <div class="phone-card-value">Vắc xin MMR</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px">Thứ Hai · 22/09/2026 · 08:30</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px">📍 TYT P. Nghĩa Tân</div>
+            </div>
+            <div class="phone-qr"></div>
+          </div>
+          <div class="phone-card">
+            <div class="phone-card-label">Mã hẹn</div>
+            <div class="phone-card-value" style="font-family:monospace;letter-spacing:2px;color:#60B4FF">TC-8932</div>
+          </div>
+          <div class="phone-btn">💉 Đăng ký tiêm mới</div>
+          <div style="margin-top:14px;font-size:11px;color:rgba(255,255,255,0.4);text-align:center">✅ Đã tiêm: Cúm mùa · MMR Mũi 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TESTIMONIALS ====== -->
+<section id="testimonials" style="padding-bottom:60px">
+  <div class="section-header reveal" style="max-width:1100px;margin:0 auto">
+    <div class="section-tag">Người dùng nói gì</div>
+    <h2 class="section-title">Được <span>hàng trăm nghìn</span> người tin dùng</h2>
+  </div>
+  <div class="testi-track-wrap">
+    <div class="testi-track" id="testiTrack">
+      <!-- Cards (duplicated in JS for infinite scroll) -->
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Trước đây tôi phải xếp hàng từ 5 giờ sáng để đặt lịch tiêm cho con. Giờ chỉ cần bấm điện thoại 3 phút là xong. Thật sự rất tiện!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👩</div>
+          <div><div class="testi-name">Chị Trần Thị Hoa</div><div class="testi-meta">Phường Nghĩa Tân, Cầu Giấy</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Ứng dụng rất dễ dùng, chữ to rõ ràng. Tôi 72 tuổi mà tự đặt lịch được không cần nhờ con cái. Cảm ơn các cháu rất nhiều!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👴</div>
+          <div><div class="testi-name">Ông Nguyễn Văn Minh</div><div class="testi-meta">Quận Hoàn Kiếm, Hà Nội</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Tôi đặt lịch cho cả 3 con một lúc, nhận được 3 mã QR riêng. Đến nơi quét là xong, không phải chờ lâu. Dịch vụ 5 sao!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👨</div>
+          <div><div class="testi-name">Anh Lê Hoàng Nam</div><div class="testi-meta">Quận 7, TP. HCM</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★⭑</div>
+        <div class="testi-text">"Hệ thống nhắc lịch qua Zalo rất hữu ích. Hôm trước bận quá suýt quên, may có tin nhắc trước 2 tiếng. Rất chu đáo!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👩‍💼</div>
+          <div><div class="testi-name">Chị Phạm Lan Anh</div><div class="testi-meta">TP. Đà Nẵng</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Là bác sĩ, tôi thấy đây là bước đi đúng đắn trong chuyển đổi số y tế. Dữ liệu tiêm chủng được lưu trữ chính xác, rất tin cậy."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">🩺</div>
+          <div><div class="testi-name">BS. Vũ Thành Đạt</div><div class="testi-meta">BV Nhi Đồng 1, TP. HCM</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Giao diện sạch sẽ, không rối mắt. Tôi chỉ mất 2 phút để đặt lịch cho mẹ tôi. Mẹ tôi cũng tự dùng được sau khi tôi hướng dẫn một lần."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👦</div>
+          <div><div class="testi-name">Bạn Nguyễn Quốc Bảo</div><div class="testi-meta">Quận Bình Thạnh, TP. HCM</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== WHY ====== -->
+<section id="why">
+  <div class="why-inner">
+    <div class="section-header reveal" style="text-align:center;max-width:600px;margin:0 auto 64px">
+      <div class="section-tag" style="justify-content:center">Tại sao chọn chúng tôi</div>
+      <h2 class="section-title">Được xây dựng <span>cho người Việt</span></h2>
+      <p class="section-sub" style="max-width:100%">Không phải bản dịch từ phần mềm nước ngoài. Chúng tôi thiết kế từ đầu cho nhu cầu của người dân Việt Nam.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">🔒</div>
+        <div>
+          <div class="why-title">Bảo mật dữ liệu</div>
+          <div class="why-desc">Dữ liệu cá nhân được mã hoá theo chuẩn AES-256. Tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân.</div>
+        </div>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.1s">
+        <div class="why-icon">♿</div>
+        <div>
+          <div class="why-title">Tiếp cận toàn diện</div>
+          <div class="why-desc">Hỗ trợ chữ lớn cho người cao tuổi, giao diện đơn giản cho người ít dùng điện thoại. Chuẩn WCAG 2.1 AA.</div>
+        </div>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.15s">
+        <div class="why-icon">💰</div>
+        <div>
+          <div class="why-title">Hoàn toàn miễn phí</div>
+          <div class="why-desc">Không thu phí đăng ký, không thu phí sử dụng. Đây là dịch vụ công do Nhà nước cung cấp cho người dân.</div>
+        </div>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.2s">
+        <div class="why-icon">⚡</div>
+        <div>
+          <div class="why-title">Thời gian thực</div>
+          <div class="why-desc">Cập nhật chỗ trống, lịch tiêm theo thời gian thực. Không bao giờ đặt nhầm lịch đã hết chỗ.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section id="cta">
+  <div class="cta-inner reveal">
+    <div style="font-size:56px;margin-bottom:20px">💉</div>
+    <h2 class="cta-title">Bảo vệ sức khoẻ<br/><span style="color:var(--accent)">gia đình bạn ngay</span></h2>
+    <p class="cta-sub">Hàng triệu người đã đặt lịch tiêm thành công. Đến lượt bạn chỉ mất 3 phút để bắt đầu.</p>
+    <div class="cta-buttons">
+      <button class="btn-cta-main" onclick="window.location.href='vaccination_app.html'">
+        Đăng ký miễn phí ngay →
+      </button>
+    </div>
+    <div class="cta-features">
+      <div class="cta-feat">Miễn phí 100%</div>
+      <div class="cta-feat">Không cần thẻ tín dụng</div>
+      <div class="cta-feat">Đăng ký trong 30 giây</div>
+      <div class="cta-feat">Hỗ trợ 24/7</div>
+    </div>
+    <p class="cta-note">Đã có tài khoản? <a href="vaccination_app.html" style="color:rgba(255,255,255,0.6);text-decoration:underline">Đăng nhập tại đây</a></p>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo-icon" style="width:48px;height:48px;font-size:24px">💉</div>
+        <div class="footer-brand-name">TiêmChủng Địa Phương</div>
+        <div class="footer-brand-desc">Hệ thống đăng ký lịch tiêm chủng trực tuyến dành cho người dân Việt Nam. Nhanh – Dễ – Miễn phí.</div>
+        <div style="margin-top:20px;font-size:13px;color:rgba(255,255,255,0.3)">🏛️ Phát triển bởi Cục Y tế Dự phòng</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Ứng dụng</div>
+        <ul class="footer-links">
+          <li><a href="#">Tính năng</a></li>
+          <li><a href="#">Cách sử dụng</a></li>
+          <li><a href="#">Câu hỏi thường gặp</a></li>
+          <li><a href="#">Cập nhật mới</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Hỗ trợ</div>
+        <ul class="footer-links">
+          <li><a href="#">Liên hệ hỗ trợ</a></li>
+          <li><a href="#">Tìm điểm tiêm</a></li>
+          <li><a href="#">Báo cáo sự cố</a></li>
+          <li><a href="#">Đường dây nóng: 1800 9999</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Pháp lý</div>
+        <ul class="footer-links">
+          <li><a href="#">Điều khoản dịch vụ</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Quy định sử dụng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 TiêmChủng Địa Phương. Tất cả quyền được bảo lưu.</div>
+      <div class="footer-socials">
+        <a class="social-icon-btn" href="#" title="Facebook">🇫</a>
+        <a class="social-icon-btn" href="#" title="Zalo">💬</a>
+        <a class="social-icon-btn" href="#" title="YouTube">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ====== PARTICLES ====== */
+(function(){
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for(let i=0;i<60;i++){
+    particles.push({
+      x: Math.random()*window.innerWidth,
+      y: Math.random()*window.innerHeight + window.innerHeight,
+      r: Math.random()*2.5 + 0.5,
+      speed: Math.random()*0.6 + 0.2,
+      opacity: Math.random()*0.6 + 0.2,
+      drift: (Math.random()-0.5)*0.3,
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(180,220,255,${p.opacity})`;
+      ctx.fill();
+      p.y -= p.speed;
+      p.x += p.drift;
+      if(p.y < -10) {
+        p.y = H + 10;
+        p.x = Math.random() * W;
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ====== NAVBAR SCROLL ====== */
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+/* ====== REVEAL ON SCROLL ====== */
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+/* ====== COUNTER ANIMATION ====== */
+function animateCounter(el){
+  const target = +el.dataset.target;
+  const suffix = el.dataset.suffix || '';
+  const duration = 2000;
+  const step = 16;
+  const increment = target / (duration/step);
+  let current = 0;
+  const timer = setInterval(()=>{
+    current = Math.min(current+increment, target);
+    const display = target >= 1000
+      ? Math.round(current).toLocaleString('vi-VN')
+      : (Number.isInteger(target) ? Math.round(current) : current.toFixed(0));
+    el.textContent = display + suffix;
+    if(current >= target) clearInterval(timer);
+  }, step);
+}
+
+const counterObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-target]').forEach(animateCounter);
+      counterObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.stats-bar').forEach(el=>counterObserver.observe(el));
+
+/* ====== TESTIMONIALS INFINITE SCROLL ====== */
+(function(){
+  const track = document.getElementById('testiTrack');
+  const clone = track.innerHTML;
+  track.innerHTML += clone; // duplicate for seamless loop
+})();
+
+/* ====== HAMBURGER ====== */
+document.getElementById('hamburger').addEventListener('click',()=>{
+  alert('Menu mobile – Tính năng sẽ được thêm trong phiên bản tiếp theo!');
+});
+</script>
+</body>
+</html>
